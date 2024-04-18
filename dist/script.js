@@ -20,8 +20,10 @@ const App = () => {
       case 'clear-last':
         setExpr(prev => {
           if (prev === 'Invalid input') {
+            setNumberFlag(prev => false);
             return '0';
           } else if (prev.length === 1) {
+            setNumberFlag(prev => false);
             return '0';
           } else {
             return prev.slice(0, prev.length - 1);
@@ -58,7 +60,7 @@ const App = () => {
                   if (prev.length > 2) {
                     if (/[+\/x]/.test(prev[prev.length - 2]) && /[-+\/x]/.test(prev[prev.length - 1])) {
                       return prev.substring(0, prev.length - 2) + input;
-                    } //3 + 5 * 6 - 2 / 4
+                    }
                   }
                   if (/[-+\/x]/.test(prev[prev.length - 1])) {
                     return prev.substring(0, prev.length - 1) + input;
