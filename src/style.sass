@@ -1,0 +1,75 @@
+$bg-color: #fdf1e2
+$txt-color: #80593b
+$acc-color: #fb964d
+$btn-color: #ebb481
+
+@mixin fill
+  display: flex
+  flex-direction: column
+  
+@mixin special-btn
+  font-weight: bold
+  font-size: 1.2em
+  cursor: pointer
+
+*, *::after, *::before
+  box-sizing: border-box
+
+body
+  font-size: 16px
+  font-family: serif, Arial
+  margin: 0
+  padding: 0
+  width: 100%
+  height: 100vh
+  background-color: $bg-color
+  color: $txt-color
+  display: flex
+  justify-content: center
+  align-items: center
+  
+#app
+  border: 2px solid
+  padding: 10px
+  width: 350px
+  height: 400px
+  min-width: 350px
+  min-height: 400px
+  background-color: $txt-color
+  @include fill
+  
+  #inner-container
+    flex: 1
+    @include fill
+  
+  #display
+    background-color: $bg-color
+    padding: 7px 10px
+    margin: 5px 0 10px
+    text-align: right
+    font-size: 1.7em
+    overflow: hidden
+    max-width: 100%
+    
+  #buttons
+    flex: 2
+    display: grid
+    grid-template-columns: 1fr 1fr 1fr 1fr
+    
+  #clear, #clear-last
+    background-color: $btn-color
+    @include special-btn 
+    
+  #equals
+    grid-area: 4 / 4 / span 2 / 4
+    background-color: $acc-color
+    color: $bg-color
+    @include special-btn
+    
+  #zero
+    grid-area: 5 / 1 / 5 / 3
+    
+.btn:not(#equals, #clear)
+  background-color: $bg-color
+  font-size: 1.2em
+  cursor: pointer
